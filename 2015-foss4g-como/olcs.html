@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>OL3-Cesium</title>
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="bower_components/reveal.js/css/reveal.min.css">
+    <link rel="stylesheet" href="theme/ol3.css" id="theme">
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="bower_components/reveal.js/lib/css/zenburn.css">
+
+    <!--[if lt IE 9]>
+    <script src="bower_components/reveal.js/lib/js/html5shiv.js"></script>
+    <![endif]-->
+    <style>
+      .reveal h1.beefy {
+        font-weight: bold;
+        text-transform: uppercase;
+        text-shadow: 10px 10px 6px rgba(0, 0, 0, 0.2);
+      }
+      .reveal ul.plain {
+        list-style-type: none;
+      }
+      .reveal h2 {
+        margin-bottom: 40px;
+      }
+      .reveal h3 {
+        margin-bottom: 30px;
+      }
+      .reveal h2 > img {
+        vertical-align: sub;
+      }
+      .text-align-left {
+        text-align: left;
+      }
+      .ex-link {
+        font-size: smaller;
+      }
+      .underline {
+        text-decoration: underline;
+      }
+      #logos > div {
+        padding: 0 10px;
+        display: inline-block;
+        text-align: center;
+        vertical-align: middle;
+      }
+      #logos > div img {
+        margin: 0;
+        vertical-align: text-bottom;
+      }
+      pre.narrow {
+        width: 50%;
+      }
+      #ol2-to-ol3 > img {
+        vertical-align: middle;
+      }
+
+    </style>
+
+    <script>
+        if (window.location.search.match( /print-pdf/gi ) ) {
+          var link = document.createElement( 'link' );
+          link.rel = 'stylesheet';
+          link.type = 'text/css';
+          link.href = 'bower_components/reveal.js/css/print/pdf.css';
+          document.getElementsByTagName( 'head' )[0].appendChild( link );
+        }
+    </script>
+
+  </head>
+  <body>
+
+    <div class="reveal">
+      <div class="slides">
+        <div class="header"></div>
+        <div class="footer">OL3-Cesium, Guillaume Beraudo</div>
+
+        <section>
+          <h1 class="beefy" style="font-size: 3em">OL3-Cesium</h1>
+          <h2>3D for OpenLayers</h2>
+          <img src="img/foss4g-logo.png">
+          <img src="img/olcs-logo2.png">
+          <img src="img/c2c_square_64x64.png">
+          <!--
+          -->
+          <p><a href="https://github.com/openlayers/ol3-cesium">https://github.com/openlayers/ol3-cesium</a></p>
+        </section>
+
+        <section>
+          <h2>Adding 3D to an OL3 map</h2>
+          <!--
+            - easy to setup
+            - synchronization → raster and vector layers / ⇄ view parameter
+            - extendible base classes: olcs.VectorSynchronizer, olcs.RasterSynchronizer, olcs.FeatureConverter
+            - one year old project, started by three companies
+            - we do monthly releases
+          -->
+          <div id="olcs-features">
+            <img src="img/olcs-logo-128.png"/>
+            <pre class="fragment"><code data-trim>
+var ol3d = new olcs.OLCesium({map: map, target: id});
+ol3d.setEnabled(true);
+            </code></pre>
+            </br>
+            <ul>
+              <li class="fragment">A Cesium globe is created</li>
+              <li class="fragment">Existing layers and view are synchronized</li>
+              <li class="fragment">Some listeners are registered</li>
+            </ul>
+        </div>
+        </section>
+
+        <section>
+          <!-- Notes:
+            - Unidirectional synchronization of layers
+            - Bidirectional synchronization of view parameters
+              - Panning, rotation, zooming in OL3 or Cesium / tilting
+          -->
+
+          <h2>One point demo</h2>
+          <div>
+            <a href="http://localhost:9001/examples/basics.html"><img src="img/basics_demo.png"></a>
+            <ul>
+              <li><a href="http://localhost:9001/examples/basics.html" target="_blank">Try it</a></li>
+<!--              <li class="fragment">What about terrain?
+                <pre class="fragment"><code data-trim>
+ol3d.getCesiumScene().terrainProvider =
+  new Cesium.CesiumTerrainProvider({
+    url: '//cesiumjs.org/stk-terrain/tilesets/world/tiles'
+});
+                </code></pre>
+              </li>
+              <li class="fragment">
+                <a href="http://openlayers.org/ol3-cesium/examples/vectors.html">All features example</a>
+              </li>
+              -->
+          </div>
+        </section>
+
+        <section>
+          <h2>Real life example</h2>
+          <div><a href="https://map.veloland.ch/">
+              <img style="vertical-align: text-top;" src="img/SchweizMobil_fr.png" />
+          </a> 3d</div>
+          <div id="schweizmobil">
+            <ul>
+              <li class="fragment">Swiss projection</li>
+              <li class="fragment">Clustering</li>
+              <li class="fragment">Points of Interest picking</li>
+              <li class="fragment">Terrain</li>
+              <li class="fragment">3D features</li>
+              <li class="fragment">
+                <a href="https://mf-chmobil3.dev.bgdi.ch/gberaudo/?lang=en&resolution=10&X=562265&Y=145700&cesium&trackId=2149217&bgLayer=pk&layers=Station" target="blank_">Dev version</a> / 
+                <a href="https://map.veloland.ch/?lang=en&resolution=6.31&X=564222&Y=145369&cesium&trackId=2149217&layers=Station" target="blank_">older version</a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Notes:
+            - Projection
+              - OL3: swiss
+              - Cesium: Google
+            - Clustering
+              - OL3: Mapserver (raster)
+              - Cesium: Custom OL3 class (vector, 30'000)
+            - Terrain
+            - 3D features
+              - Track in absolute 3D position
+              - POIs positioned on terrain by Cesium
+          -->
+        </section>
+
+
+        <section>
+          <h2>Heterogeneous projections</h2>
+          <div>
+            <ul>
+              <li class="fragment">Cesium only supports EPSG:4326 and EPSG:3857</li>
+              <li class="fragment">Vectors reprojected automatically</li>
+              <li class="fragment">Rasters handled by application</li>
+            </ul>
+          </div>
+        </section>
+
+
+        <!--
+                      <li>distance to the point computed in the shader</li>
+              <li>points farther than the "apparition distance" are discarded</li>
+              -->
+        <section>
+          <h2>Vector clustering</h2>
+          <div>
+            <img src="img/snippet_clustering.png">
+            <ul>
+              <li class="fragment">30'000 points instead of reprojected rasters</li>
+              <li class="fragment">Pregenerated using a <a href="https://github.com/gberaudo/ol3-cluster-tool">custom OpenLayers3 tool</a></li>
+              <li class="fragment">Picking: id, children and resolution per feature</li>
+              <li class="fragment">Data only sent once to the GPU, decimation in the shader</li>
+            </ul>
+          </div>
+        </section>
+
+
+        <!--
+        absolute positioning: simply use 3 compounents for coordinates
+        relative to ground: altitudeMode = clampToGround, relativeToGround
+        -->
+        <section>
+          <h2>3D geometries</h2>
+          <div>
+            <img src="img/snippet_3d_features.png">
+            <ul>
+              <li class="fragment">Absolute positioning (x, y, z) for all geometries</li>
+              <li class="fragment">...but incompatible with terrain LOD</li>
+              <li class="fragment">Dynamic positioning (altitudeMode = clampToTerrain)</li>
+              <li class="fragment">...only points supported, polygon and lines are WIP</li>
+            </ul>
+          </div>
+        </section>
+
+
+        <!--
+                <ul>
+                  <li>tiling</li>
+                  <li>a custom OL3 loading strategy</li>
+                  <li>a custom Cesium primitive based on the QuadtreePrimitive</li>
+                  <li>Levels Of Details</li>
+                </ul>
+-->
+        <section>
+          <h2>Streaming buildings and vectors</h2>
+          <div>
+            <ul>
+              <li class="fragment"><a href="http://localhost:9001/examples/extrude/examples/extrude.html" target="blank_">2.5D extruded polygons of a single "tile" POC</a></li>
+              <li class="fragment">TODO:
+              <ul>
+                <li>tiling</li>
+                <li>loading/unloading strategy</li>
+                <li>Levels Of Details</li>
+                <li>3D models</li>
+              </ul>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+
+        <section>
+          <h2>Other ideas for future</h2>
+          <ul>
+            <li class="fragment">Ecmascript 6</li>
+            <li class="fragment">Webgl point based primitive</li>
+            <li class="fragment">Client side raster reprojection</li>
+            <li class="fragment">...</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Thanks</h2>
+          <div>
+            <a href="https://github.com/openlayers/ol3-cesium"><img src="img/github_ol3cesium.png"></a>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- reveal.js loading and configuration -->
+    <script src="bower_components/reveal.js/lib/js/head.min.js"></script>
+    <script src="bower_components/reveal.js/js/reveal.min.js"></script>
+    <script>
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        rollingLinks: false,
+        transition: 'linear', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [{
+          src: 'bower_components/reveal.js/lib/js/classList.js',
+          condition: function() {
+            return !document.body.classList;
+          }
+        }, {
+          src: 'bower_components/reveal.js/plugin/highlight/highlight.js',
+          async: true,
+          callback: function() {
+            hljs.initHighlightingOnLoad();
+          }
+        }]
+      });
+
+    </script>
+  </body>
+</html>

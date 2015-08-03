@@ -1,0 +1,9 @@
+OL3-Cesium is a new WEB library for automatically creating and synchronizing a
+Cesium 3D globe from an OpenLayers3 map.
+
+The implementation and maintenance effort is handled by the community, allowing
+application developers to quiclky focus on their special needs.
+
+In this talk we will demonstrate practical 3D cases and explain what happens
+under the hood. Our main interests will include projections, positioning on
+terrain, unified interactions and streaming of vectors and buildings.

@@ -1,0 +1,10 @@
+extends _layouts/master
+
+block context
+  - var title = 'Basic demo';
+  - var oljs = 'ol3/ol.js';
+  - var cesiumjs = 'Cesium/Cesium.js';
+  - var olcsjs = 'ol3cesium-debug.js';
+
+block scripts
+  script(src='basics.js')
