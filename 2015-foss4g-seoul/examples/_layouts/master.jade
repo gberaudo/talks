@@ -1,0 +1,21 @@
+block context
+  // defaults go here, template may override
+  - var title = 'Examples';
+
+doctype html
+html
+  head
+    title OL3-Cesium - #{title}
+    link(rel='stylesheet', href='ol3/css/ol.css')
+    link(rel='stylesheet', href='Cesium/Widgets/widgets.css')
+    link(rel='stylesheet', href='style.css')
+    block styles
+  body
+    block content
+      #map
+      #globe
+    block extra
+    script(src=oljs)
+    script(src=cesiumjs)
+    script(src=olcsjs)
+    block scripts

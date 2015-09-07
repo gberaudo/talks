@@ -1,0 +1,8 @@
+{
+  "name": "foss4g2014",
+  "version": "0.0.1",
+  "dependencies": {
+    "reveal.js": "2.6.2",
+    "bootstrap": "2.3.2"
+  }
+}
