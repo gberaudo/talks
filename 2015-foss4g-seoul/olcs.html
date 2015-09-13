@@ -80,17 +80,37 @@
     <div class="reveal">
       <div class="slides">
         <div class="header"></div>
-        <div class="footer">OL3-Cesium, Guillaume Beraudo</div>
+        <div class="footer"><small>OL3-Cesium &ndash; Guillaume Beraudo, Andreas Hocevar</small></div>
 
         <section>
           <h1 class="beefy" style="font-size: 3em">OL3-Cesium</h1>
+          <img src="img/olcs-logo-128.png">
           <h2>3D for OpenLayers</h2>
-          <img src="img/foss4g-logo.png">
-          <img src="img/olcs-logo2.png">
-          <img src="img/c2c_square_64x64.png">
+          <img style="height:64px" src="img/c2c_square_64x64.png">
+          <img style="height:64px" src="img/foss4g-logo.png">
+          <img style="height:64px" src="img/boundless.png">
           <!--
           -->
           <p><a href="https://github.com/openlayers/ol3-cesium">https://github.com/openlayers/ol3-cesium</a></p>
+        </section>
+
+        <section>
+          <h2>Why, what, how?</h2>
+          <div id="olcs-features">
+            <center class="fragment">
+              3D views for OpenLayers<br>
+              Easy to learn for OpenLayers users
+            </center>
+            <br>
+            <center class="fragment">
+              Funded by a Boundless client<br>
+              Created in cooperation with KlokanTech and Camptocamp
+            </center>
+            <br>
+            <center class="fragment">
+              Initial release 1 year ago<br>
+              Monthly releases</center>
+        </div>
         </section>
 
         <section>
@@ -103,7 +123,6 @@
             - we do monthly releases
           -->
           <div id="olcs-features">
-            <img src="img/olcs-logo-128.png"/>
             <pre class="fragment"><code data-trim>
 var ol3d = new olcs.OLCesium({map: map, target: id});
 ol3d.setEnabled(true);
@@ -111,8 +130,7 @@ ol3d.setEnabled(true);
             </br>
             <ul>
               <li class="fragment">A Cesium globe is created</li>
-              <li class="fragment">Existing layers and view are synchronized</li>
-              <li class="fragment">Some listeners are registered</li>
+              <li class="fragment">Layers and view are synchronized</li>
             </ul>
         </div>
         </section>
@@ -124,12 +142,13 @@ ol3d.setEnabled(true);
               - Panning, rotation, zooming in OL3 or Cesium / tilting
           -->
 
-          <h2>One point demo</h2>
+          <h4>Synchronized views</h4>
           <div>
-            <a href="http://localhost:9001/examples/basics.html"><img src="img/basics_demo.png"></a>
-            <ul>
-              <li><a href="http://localhost:9001/examples/basics.html" target="_blank">Try it</a></li>
-<!--              <li class="fragment">What about terrain?
+            <a href="examples/basics.html"><img src="img/basics_demo.png"></a>
+            <p>
+              <a href="examples/basics.html" target="_blank">Try it</a>
+            </p>
+<!--              <ul><li class="fragment">What about terrain?
                 <pre class="fragment"><code data-trim>
 ol3d.getCesiumScene().terrainProvider =
   new Cesium.CesiumTerrainProvider({
@@ -139,8 +158,39 @@ ol3d.getCesiumScene().terrainProvider =
               </li>
               <li class="fragment">
                 <a href="http://openlayers.org/ol3-cesium/examples/vectors.html">All features example</a>
-              </li>
+              </li></ul>
               -->
+          </div>
+        </section>
+
+        <section>
+          <h2>3D map with terrain</h2>
+          <div id="olcs-terrain">
+            <pre class="fragment"><code data-trim>
+var ol3d = new olcs.OLCesium({map: map});
+var scene = ol3d.getCesiumScene();
+var terrainProvider = new Cesium.CesiumTerrainProvider({
+  url: '//cesiumjs.org/stk-terrain/tilesets/world/tiles'
+});
+scene.terrainProvider = terrainProvider;
+ol3d.setEnabled(true);
+            </code></pre>
+            <ul>
+              <li class="fragment">Raster layers are clamped to ground</li>
+              <li class="fragment">z-coordinate of vector layers is used</li>
+            </ul>
+        </div>
+        </section>
+
+        <section>
+          <!-- Notes:
+            - Terrain provider and track should have matching altitudes
+          -->
+
+          <div>
+            <h4>3D GPS Track</h4>
+            <a href="examples/terrain-vector.html"><img src="img/track.png"></a>
+              <a href="examples/terrain-vector.html" target="_blank">Try it</a>
           </div>
         </section>
 
@@ -157,7 +207,7 @@ ol3d.getCesiumScene().terrainProvider =
               <li class="fragment">Terrain</li>
               <li class="fragment">3D features</li>
               <li class="fragment">
-                <a href="https://mf-chmobil3.dev.bgdi.ch/gberaudo/?lang=en&resolution=10&X=562265&Y=145700&cesium&trackId=2149217&bgLayer=pk&layers=Station" target="blank_">Dev version</a> / 
+                <a href="https://mf-chmobil3.dev.bgdi.ch/gberaudo/?lang=en&resolution=10&X=562265&Y=145700&cesium&trackId=2149217&bgLayer=pk&layers=Station" target="blank_">Dev version</a> /
                 <a href="https://map.veloland.ch/?lang=en&resolution=6.31&X=564222&Y=145369&cesium&trackId=2149217&layers=Station" target="blank_">older version</a>
               </li>
             </ul>
@@ -238,7 +288,7 @@ ol3d.getCesiumScene().terrainProvider =
           <h2>Streaming buildings and vectors</h2>
           <div>
             <ul>
-              <li class="fragment"><a href="http://localhost:9001/examples/extrude/examples/extrude.html" target="blank_">2.5D extruded polygons of a single "tile" POC</a></li>
+              <li class="fragment"><a href="examples/extrude/examples/extrude.html" target="blank_">2.5D extruded polygons of a single "tile" POC</a></li>
               <li class="fragment">TODO:
               <ul>
                 <li>tiling</li>
