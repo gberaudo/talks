@@ -4,14 +4,8 @@ var track = new ol.source.Vector({
 });
 track.once('change', function() {
   var features = track.getFeatures();
-  var geometry, coordinates;
   for (var i = 0, ii = features.length; i < ii; ++i) {
-    geometry = features[i].getGeometry();
-    coordinates = geometry.getCoordinates()[0];
-    for (var j = 0, jj = coordinates.length; j < jj; ++j) {
-      coordinates[j][2] += 50;
-    }
-    geometry.setCoordinates([coordinates]);
+    olcs.core.applyHeightOffsetToGeometry(features[i].getGeometry(), 75);
   }
   ol3d.setEnabled(true);
 });
@@ -43,3 +37,4 @@ var terrainProvider = new Cesium.CesiumTerrainProvider({
   url: '//cesiumjs.org/stk-terrain/tilesets/world/tiles'
 });
 scene.terrainProvider = terrainProvider;
+scene.globe.depthTestAgainstTerrain = true;

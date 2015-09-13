@@ -176,11 +176,12 @@ var terrainProvider = new Cesium.CesiumTerrainProvider({
   url: '//cesiumjs.org/stk-terrain/tilesets/world/tiles'
 });
 scene.terrainProvider = terrainProvider;
+scene.globe.depthTestAgainstTerrain = true;
 ol3d.setEnabled(true);
             </code></pre>
             <ul>
               <li class="fragment">Raster layers are clamped to ground</li>
-              <li class="fragment">z-coordinate of vector layers is used</li>
+              <li class="fragment">z-coordinate of vector layers is used with an offset</li>
             </ul>
         </div>
         </section>
