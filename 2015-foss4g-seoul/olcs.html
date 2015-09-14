@@ -65,6 +65,11 @@
         vertical-align: middle;
       }
 
+      .imgbdg {
+        margin: 0;
+        width: 80%
+      }
+
     </style>
 
     <script>
@@ -202,19 +207,17 @@ ol3d.setEnabled(true);
 
         <section>
           <h2>Real life example</h2>
-          <div><a href="https://map.veloland.ch/">
+          <div><a href="https://map.veloland.ch/?cesium">
               <img style="vertical-align: text-top;" src="img/SchweizMobil_fr.png" />
           </a> 3d</div>
           <div id="schweizmobil">
             <ul>
               <li class="fragment">Swiss projection</li>
-              <li class="fragment">Clustering</li>
-              <li class="fragment">Points of Interest picking</li>
-              <li class="fragment">Terrain</li>
-              <li class="fragment">3D features</li>
+              <li class="fragment">Many layers including clusters</li>
+              <li class="fragment">Picking and tooltips</li>
+              <li class="fragment">Line and point features</li>
               <li class="fragment">
-                <a href="https://mf-chmobil3.dev.bgdi.ch/gberaudo/?lang=en&resolution=10&X=562265&Y=145700&cesium&trackId=2149217&bgLayer=pk&layers=Station" target="blank_">Dev version</a> /
-                <a href="https://map.veloland.ch/?lang=en&resolution=6.31&X=564222&Y=145369&cesium&trackId=2149217&layers=Station" target="blank_">older version</a>
+                <a href="https://map.veloland.ch/?lang=en&resolution=6.31&X=564222&Y=145369&cesium&trackId=2149217&layers=Station" target="blank_">Try it</a>
               </li>
             </ul>
           </div>
@@ -235,12 +238,17 @@ ol3d.setEnabled(true);
 
 
         <section>
-          <h2>Heterogeneous projections</h2>
+          <h2>Different 2D projection</h2>
           <div>
             <ul>
-              <li class="fragment">Cesium only supports EPSG:4326 and EPSG:3857</li>
-              <li class="fragment">Vectors reprojected automatically</li>
-              <li class="fragment">Rasters handled by application</li>
+              <li class="fragment">Cesium supports EPSG:4326 and EPSG:3857</li>
+              <li class="fragment">Vector layers are reprojected automatically</li>
+              <li class="fragment">Raster layers must be handled by application
+                <ul>
+                  <li class="fragment">No support for client side reprojection (yet?)</li>
+                  <li class="fragment">Require additionnal dataset in EPSG:4326 or EPSG:3857</li>
+                  <!--<li class="fragment">Unsupported projections skipped by default</li>-->
+              </li>
             </ul>
           </div>
         </section>
@@ -273,10 +281,14 @@ ol3d.setEnabled(true);
           <div>
             <img src="img/snippet_3d_features.png">
             <ul>
-              <li class="fragment">Absolute positioning (x, y, z) for all geometries</li>
-              <li class="fragment">...but incompatible with terrain LOD</li>
-              <li class="fragment">Dynamic positioning (altitudeMode = clampToTerrain)</li>
-              <li class="fragment">...only points supported, polygon and lines are WIP</li>
+              <li class="fragment">Static positioning (x, y, z) for all geometries</li>
+              <li class="fragment">Dynamic positioning (altitudeMode = clampToTerrain)
+                <ul>
+                  <li class="fragment">Points</li>
+                  <li class="fragment">Polygons coming soon</li>
+                  <li class="fragment">Lines are Work In Progress</li>
+                </ul>
+              </li>
             </ul>
           </div>
         </section>
@@ -290,18 +302,39 @@ ol3d.setEnabled(true);
                   <li>Levels Of Details</li>
                 </ul>
 -->
+
         <section>
-          <h2>Streaming buildings and vectors</h2>
+          <h2>Buildings and vector tiles</h2>
           <div>
             <ul>
-              <li class="fragment"><a href="examples/extrude/examples/extrude.html" target="blank_">2.5D extruded polygons of a single "tile" POC</a></li>
-              <li class="fragment">TODO:
-              <ul>
-                <li>tiling</li>
-                <li>loading/unloading strategy</li>
-                <li>Levels Of Details</li>
-                <li>3D models</li>
-              </ul>
+              <li class="fragment">3D buildings tile generation POC from CityGML
+              <img class="imgbdg" src="img/buildings_3d.png"></img></li>
+              <!-- <li class="fragment">CityGML → vrml → Collada → GLTF</li> -->
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <h2>Buildings and vector tiles</h2>
+          <div>
+            <ul>
+              <li class="fragment">2.5D extruded polygons of a single "tile" POC
+              <img class="imgbdg" src="img/capture_extrude_3d.png"></img></li>
+              <li class="fragment"><a href="examples/extrude/examples/extrude.html" target="blank_">Try it</a></li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <h2>Buildings and vector tiles</h2>
+          <div>
+            <ul>
+              <li class="fragment"><a href="http://www.cesiumjs.org/2015/08/10/Introducing-3D-Tiles/">3D-tiles specification</a> is WIP in Cesium
+                <ul>
+                  <li class="fragment">Tiling and Levels Of Details</li>
+                  <li class="fragment">Loading and unloading strategies</li>
+                  <li class="fragment">Efficient (GLTF)</li>
+                </ul>
               </li>
             </ul>
           </div>
@@ -313,13 +346,12 @@ ol3d.setEnabled(true);
           <ul>
             <li class="fragment">Ecmascript 6</li>
             <li class="fragment">Webgl point based primitive</li>
-            <li class="fragment">Client side raster reprojection</li>
             <li class="fragment">...</li>
           </ul>
         </section>
 
         <section>
-          <h2>Thanks</h2>
+          <h2>Questions?</h2>
           <div>
             <a href="https://github.com/openlayers/ol3-cesium"><img src="img/github_ol3cesium.png"></a>
           </div>
