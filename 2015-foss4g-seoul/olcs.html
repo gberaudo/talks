@@ -106,19 +106,21 @@
           <h2>Why, what, how?</h2>
           <div id="olcs-features">
             <center class="fragment">
-              Bring 3D to OpenLayers maps<br/>
-              Handle low level complexity and provide helpers<br />
-              Federate efforts in one place<br />
-              Easy to learn for OpenLayers users
+              Add 3D to OpenLayers maps<br>
+              OpenLayers can handle 3D data, Cesium can render it<br>
+              Easy to learn for OpenLayers users<br>
+              Federate efforts in one place<br>
             </center>
             <br>
             <center class="fragment">
-              Funded by a Boundless client and several Camptocamp clients<br/>
-              Created in cooperation with KlokanTech and Camptocamp
+              Initially funded by a Boundless client<br>
+              Created in cooperation with KlokanTech and Camptocamp<br>
+              Additional funding by Camptocamp clients<br>
             </center>
             <br>
             <center class="fragment">
-              Initial release 1 year ago<br/>
+              Initial release 1 year ago<br>
+              Camptocamp is actively working on new features<br>
               Monthly releases</center>
         </div>
         </section>
@@ -140,7 +142,7 @@ ol3d.setEnabled(true);
             </br>
             <ul>
               <li class="fragment">A Cesium globe is created</li>
-              <li class="fragment">Layers and view are kept synchronized</li>
+              <li class="fragment">layers and view are kept in sync</li>
             </ul>
         </div>
         </section>
@@ -183,12 +185,12 @@ var terrainProvider = new Cesium.CesiumTerrainProvider({
   url: '//cesiumjs.org/stk-terrain/tilesets/world/tiles'
 });
 scene.terrainProvider = terrainProvider;
-scene.globe.depthTestAgainstTerrain = true;
+scene.globe.depthTestAgainstTerrain = true; // optional
 ol3d.setEnabled(true);
             </code></pre>
             <ul>
               <li class="fragment">Raster layers are clamped to ground</li>
-              <li class="fragment">z-coordinate of vector layers is used with an offset</li>
+              <li class="fragment">z-coordinates of vector data are used</li>
             </ul>
         </div>
         </section>
