@@ -1,0 +1,14 @@
+Ol3-Cesium is an exciting web library bringing 3D to an OpenLayers3 map. A
+Cesium virtual globe is automatically created from the map and displayed
+side-by-side for collaborative interaction or stacked for exclusive tasks. The
+globe camera and the map view (centre, resolution, rotation) are
+bidirectionally synchronized: interacting on one updating the other.
+
+Layers are synchronized from the map: - ol3 raster layers show up on the globe
+and reuse cache when possible; - ol3 vector layers render using the same style
+and may be positioned freely in 3D. Additionally, specific data may be
+displayed on the globe, like terrain or vectors.
+
+Vectors are re-projected on-the-fly during synchronisation. Since one
+synchronizer may not fit all needs, the library exports core functions to allow
+advanced or custom use.
