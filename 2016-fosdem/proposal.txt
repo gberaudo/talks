@@ -1,0 +1,11 @@
+OL3-Cesium, 3D for OpenLayers
+
+Ol3-Cesium is a javascript library for adding a 3D globe to OpenLayers 3
+applications. No need for plugins, it runs natively with WEBGL.
+
+Getting started is very simple and you can see your data (raster, vectors)
+on the Cesium globe and navigate in 3D. Synchronization is automatic.
+
+We will show how easy it is to get started and what happens under the hood
+in the library. The talk will be illustrated with demos and ideas for the
+future.

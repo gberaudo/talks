@@ -1,0 +1,94 @@
+OL3-Cesium, 3D for OpenLayers
+
+Ol3-Cesium is a javascript library for adding a 3D globe to OpenLayers 3
+applications. No need for plugins, it runs natively with WEBGL.
+
+Getting started is very simple and you can see your data (raster, vectors)
+on the Cesium globe and navigate in 3D. Synchronization is automatic.
+
+We will show how easy it is to get started and what happens under the hood
+in the library. The talk will be illustrated with demos and ideas for the
+future.
+
+
+- self presentation
+  name, github link, work at Camptocamp in Switzerland
+  main dev of OL3-Cesium
+
+- OL3-Cesium presentation
+  bsd2, library, js, ol3, cesium, talk together
+
+- What is OL3?
+  bsd2, maps, 2D, js, canvas, many projections, discrete/pixel perfect, fast, feature-full
+  example map (schweizmobil)
+  ? what about rotations?
+
+- What is Cesium?
+  apache2, 3D, js, webgl, mercator/lonlat, continuous/blurry, fast, terrain, buildings, lighting
+  example map (schweizmobil)
+  
+- Why OL3-Cesium?
+  dramatical reduction of code in an application using both OL3 and Cesium
+  reusable on many projects, community
+  example maps side by side
+
+-> 2 minutes
+
+- Great! How to get started?
+  package.json / github release
+  script src
+  live example
+
+- side by side or stacked: AND / OR
+- automatic
+- simple to setup
+- navigate
+
+I Imagine you have an OL3 map and you want to make a globe from it:
+
+ol3d = new olcs.OLCesium({map: map});
+ol3d.setEnabled(true);
+
+-> done
+
+- navigate in 3D ->   synched in 2D
+- zoom in 3D -> synched in 2D (but challenges, like curvature of the earth)
+
+What about navigating in 2D?
+
+- programatically interact with OL3 -> see result both in 2D and 3D
+  add vector point
+  add raster
+  -> AbstractSynchronizationManager -> vector/raster
+  -> vectorLayerConverter OL3 features -> Cesium primitives
+  -> pass your own converters to the OLCesium constructor
+  -> see Geoadmin github
+
+
+- Great but what about 3D terrain, 3D lighting?
+  use plain Cesium, basically: 
+
+II 
+ 
+ - points:
+   plugin system, extension (geoadmin)
+   lazy loading (fast 2D, optin on smartphones...)
+   autorender loop
+
+demos:
+  - geoadmin 
+     efficiency (fog: real life constraints)
+     unconventionnal points of view (take a few pictures)
+     capture of tiles with and without fog
+  - schweizmobil:
+    - 2D raster -> 3D vectors ol3-cluster-tool
+    - lines on terrain (somehow) img 2D/ 3D
+
+- future:
+  client side raster reprojection (automatically support all projections supported by OL3)
+
+
+community:
+- we share the OL3 mailinglist (thanks for that!)
+- OL3-Cesium github issues and PRs!
+- monthly releases

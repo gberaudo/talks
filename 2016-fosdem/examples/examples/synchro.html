@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="robots" content="index, all" />
+    <title>ol3cesium vectors example</title>
+    <link rel="stylesheet" href="../ol.css" type="text/css"></link>
+    <style>.cesium-credit-textContainer { display: inline-block; font-size: 50%; line-height: 100%;}</style>
+  </head>
+  <body>
+    <div id="map2d" style="width:600px;height:400px;float:left;"></div>
+    <div id="map3d" style="width:600px;height:400px;float:left;position:relative;"></div>
+
+    <div><input type="button" value="Lazy load Cesium" onclick="javascript:enableCesium()" /></div>
+    <div><input type="button" value="Add/remove feature" onclick="javascript:addOrRemoveOneFeature()" /></div>
+    <div><input type="button" value="Toggle style" onclick="javascript:toggleStyle();" /></div>
+    <div id="logs"></div>
+    <script src="../Cesium/Cesium.js"></script>
+    <script src="../ol3cesium.js"></script>
+    <script src="synchro.js"></script>
+  </body>
+</html>
+

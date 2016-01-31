@@ -1,0 +1,22 @@
+http://geofemengineering.blogspot.ch/2015/11/call-for-presentations-geospatial.html
+
+ HOW TO SUBMIT YOUR PROPOSAL FOR A TALK
+
+ Are you thrilled to present your work to other open source developers? Would
+ you like to run a discussion? Any other ideas? Please submit your proposal
+ using the Pentabarf event planning tool at:
+
+ https://penta.fosdem.org/submission/FOSDEM16
+
+ Make sure to select the 'Geospatial devroom' as  'Track'. Please, specify in
+ the notes if you prefer for your presentation either a short timeslot
+ (lightning talks ~10 minutes) or a long timeslot (20 minutes presentation +
+ discussion). However, note that time slots are indicative and will be assigned
+ according to the needs of the session.
+
+ The DEADLINE for submissions is Tuesday **1st December 2015**. Notification of
+ acceptance will be sent to the Authors by Friday 11/12/2015 at the latest.
+
+ Should you have any questions, please do not hesitate to get in touch with the
+ organisers of the devroom at fosdem-geospatial@gisky.be! Feel free to forward
+ this CfP to anyone potentially interested.
