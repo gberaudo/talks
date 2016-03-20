@@ -1,0 +1,19 @@
+Title:
+OL3-Cesium: 3D for OpenLayers
+
+
+Keywords:
+3D, globe, map, OpenLayers, Cesium
+
+
+Abstract:
+OL3-Cesium is a Javascript library for adding a 3D globe to OpenLayers applications.
+Concretely, a globe is created and synchronized using raster and vector data from
+the 2D map. This is done without plugin thanks to WebGL.
+
+This talk is a general presentation of Cesium and OL3-Cesium. We will compare
+OpenLayers and Cesium and demonstrate how a 2D map can be enhanced with 3D.
+Current stand and work in progress will be discussed, both in Cesium and Ol3-Cesium.
+
+This talk is for anyone interested in 3D with OpenLayers 3. Come to this talk
+if you are interested in new ways of presenting and interacting with your map.
