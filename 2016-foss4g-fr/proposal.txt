@@ -1,0 +1,12 @@
+Visualiser des données 3D dans des applications OpenLayers, c'est l'objectif du
+projet OL3-Cesium. Découvrez cette bibliothèque open source qui tire pleinement
+parti de la puissance de WebGL. Le globe 3D Cesium fonctionne sur tout
+navigateur supportant WebGL, y compris les navigateurs mobiles, et ne nécessite
+pas de plugin. Grâce à l'intégration entre OpenLayers 3 et Cesium, il est
+possible de partager des données, de les afficher de façon dynamique
+(clustering) et d'interagir avec le globe 3D (interrogation). La bibliothèque
+Ol3-Cesium est utilisée dans des projets d’envergure et bénéficie du
+développement très soutenu de Cesium. La présentation sera axée sur des cas
+d'utilisation concrets montrant le partage des données et des fonctionnalités.
+Nous montrerons aussi comment aller plus loin avec du clustering de POIs ou
+l'insertion de bâtiments 3D sur le terrain.
