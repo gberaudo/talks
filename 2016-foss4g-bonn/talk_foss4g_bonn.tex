@@ -14,7 +14,7 @@
 
 \hypersetup{colorlinks,urlcolor=blue}
 \setbeamertemplate{footline}[text line]{%
-  \parbox{\linewidth}{\vspace*{-8pt}OL3-Cesium\hfill\insertshortauthor, FOSS4G Bonn 2016}}
+  \parbox{\linewidth}{\vspace*{-8pt}OL3-Cesium - \href{https://bit.ly/2bl7quz}{https://bit.ly/2bl7quz}\hfill\insertshortauthor, FOSS4G Bonn 2016}}
 \setbeamertemplate{navigation symbols}{}
 
 \begin{document}
@@ -55,7 +55,7 @@
   \begin{frame}
     \frametitle{OpenLayers 3 - The world is flat!}
     \begin{center}
-     \includegraphics[width=.7\linewidth]{./images/flat_earth2.png}
+     \includegraphics[width=\linewidth]{./images/flat_earth2.png}
     \end{center}
   \end{frame}
 
@@ -63,9 +63,10 @@
   \begin{frame}
     \frametitle{OpenLayers 3 - The world is flat!}
     \begin{itemize}
-      \item Developement since 2013 (2006 for OpenLayers 2)
-      \pause\item Raster and vector layers drawn on top of each other
-      \pause\item View with custom projection, rotation, resolution, position
+%       \item Developement since 2013 (2006 for OpenLayers 2)
+%       \pause\item Layers drawn on top of each other
+      \pause\item Support any projection
+      \pause\item Top down view with support for rotation
       \pause\item Same resolution for all pixels
       \pause\item Flexible, optimized, pixel perfect
       \pause\item \textbf{flat?}
@@ -76,7 +77,7 @@
   \begin{frame}
     \frametitle{Cesium - The world is a realistic 3D scene}
     \begin{center}
-     \includegraphics[width=.7\linewidth]{./images/round_earth2.png}
+     \includegraphics[width=\linewidth]{./images/round_earth2.png}
     \end{center}
 % Ajouter le soleil
     \end{frame}
@@ -85,10 +86,11 @@
   \begin{frame}
     \frametitle{Cesium - The world is a realistic 3D scene}
     \begin{itemize}
-      \item Developement since 2012
+%       \item Developement since 2012
       \pause\item Only Mercator and Lonlat (EPSG:3857 and EPSG:4326)
       \pause\item WGS84 ellipsoid
-      \pause\item Z dimension, terrain, models, lights
+      \pause\item New Z dimension
+      \pause\item Terrain, models, shadows
       \pause\item WebGL, custom optimized renderer
     \end{itemize}
   \end{frame}
@@ -97,10 +99,10 @@
   \begin{frame}
     \frametitle{Cesium - Challenges}
     \begin{itemize}
-      \pause\item Vector on (dynamic) terrain
-      \pause\item Raster on steep terrain
-      \pause\item Large datasets: trees, planes, bridges, buildings (\href {https://github.com/AnalyticalGraphicsInc/3d-tiles}{3D-tiles})
-      \pause\item Needs (lots of) CPU, GPU, bandwidth
+      \pause\item 2D vector on terrain (terrain LOD is dynamic!)
+      \pause\item 2D raster on steep terrain
+      \pause\item Bandwidth: buildings, bridges, trees... can be heavy (\href {https://github.com/AnalyticalGraphicsInc/3d-tiles}{3D-tiles})
+      \pause\item Eat all available CPU/GPU resources
     \end{itemize}
 
 % 2D and 3D : somehow different focus and challenges
@@ -111,12 +113,12 @@
   \begin{frame}
     \frametitle{OL3-Cesium - The best of all worlds}
     \begin{itemize}
-      \item Developement since 2014
+%       \item Developement since 2014
       \pause\item Write once, use in 2D and 3D
-      \pause\item Receive from and give to the community
-      \pause\item Start interacting in one world and continue in the other
+      \pause\item Receive and share with the community
       \pause\item Easiest way to add 3D to an OpenLayers 3 map
-      \pause\item In a nutshell \textbf{it makes a great application awesome}
+      \pause\item Start interacting in one world and continue in the other
+      \pause\item It \textbf{literally} brings a new dimension to your maps
     \end{itemize}
   \end{frame}
 
@@ -133,9 +135,10 @@
     \begin{itemize}
       \pause\item Custom 3D terrain - different projections
       \pause\item 3D vector clustering with 30'000 points
-      \pause\item Optimized for a high number of users
+      \pause\item Optimized for lots of users
       \pause\item CPU/GPU resource saving by stopping the render loop
       \pause\item Workaround for lines on terrain
+      \pause\item $[demo]$
      \end{itemize}
   \end{frame}
 
@@ -145,27 +148,52 @@
     \begin{center}
       \includegraphics[width=.6\linewidth]{./images/geoadmin_water_catchment_areas.png}
     \end{center}
-    \href {https://map.geo.admin.ch}{Geoadmin - Swiss geoportal}
+    \href {https://map.geo.admin.ch/?pegman=true&topic=ech&lang=en&bgLayer=ch.swisstopo.pixelkarte-farbe&layers=ch.swisstopo.zeitreihen,ch.bfs.gebaeude_wohnungs_register,ch.bav.haltestellen-oev,ch.swisstopo.swisstlm3d-wanderwege,ch.swisstopo.swissimage-product&layers_visibility=false,false,true,true,true&layers_timestamp=18641231,,,,&lon=7.02474&lat=46.35425&elevation=6028&heading=0.000&pitch=-50.000}{Geoadmin - Swiss geoportal}
     \end{figure}
 
     \begin{itemize}
-      \pause\item Lazy loading - nice 2D/3D transitions
+      \pause\item Lazy loading
       \pause\item 3D tiles: buildings, bridges
       \pause\item Own synchronizers (raster $\rightarrow$ vector, different projections)
-      \pause\item New points of views
+      \pause\item Immersive views
+      \pause\item $[demo]$
     \end{itemize}
   \end{frame}
 
 
   \begin{frame}
-    \frametitle{OL3-Cesium - quality / bandwidth}
+    \frametitle{OL3-Cesium - quality / performance}
     \begin{center}
       \includegraphics[width=\linewidth]{./images/schweizmobil_fog.png}
     \end{center}
 
     \begin{itemize}
      \pause\item \href {https://github.com/gberaudo/ol3-cluster-tool}{Vector clustering}: top quality, some geojsons instead of millions of raster tiles
-     \pause\item Fog: reduce details according to distance from the camera
+     \pause\item Fog: reduce details, improve performance
+    \end{itemize}
+  \end{frame}
+
+
+  \begin{frame}
+    \frametitle{Ideas for the future - need founding}
+    \begin{itemize}
+      \pause\item Lines on terrain workaround (corridor geometries)
+      \pause\item Integrate 3D vector clustering
+      \pause\item Client side raster reprojection
+      \pause\item Official extruded polygons/buildings support
+    \end{itemize}
+  \end{frame}
+
+
+  \begin{frame}
+    \frametitle{Questions?}
+    \vspace{-20pt}\begin{center}
+      \includegraphics[width=0.9\linewidth]{images/github_contribute.png}
+    \end{center}
+    \begin{itemize}
+      \item Thank you for your attention
+%       \item $https://github.com/gberaudo/talks/raw/master/2016-foss4g-bonn/talk_foss4g_bonn.pdf$
+      \item Danke - Questions?
     \end{itemize}
   \end{frame}
 
@@ -186,31 +214,6 @@
       \includegraphics[width=\linewidth]{./images/geoadmin_immersive_view_from_home.png}
     \end{center}
   \end{frame}
-
-
-  \begin{frame}
-    \frametitle{Ideas for the future - need founding}
-    \begin{itemize}
-      \pause\item Lines on terrain workaround (corridor geometries)
-      \pause\item Integrate 3D vector clustering
-      \pause\item Client side raster reprojection
-      \pause\item Official extruded polygons support
-    \end{itemize}
-  \end{frame}
-
-
-  \begin{frame}
-    \frametitle{Questions?}
-    \vspace{-20pt}\begin{center}
-      \includegraphics[width=0.9\linewidth]{images/github_contribute.png}
-    \end{center}
-    \begin{itemize}
-      \item Thank you for listening
-%       \item $https://github.com/gberaudo/talks/raw/master/2016-foss4g-bonn/talk_foss4g_bonn.pdf$
-      \item Danke - Questions?
-    \end{itemize}
-  \end{frame}
-
 
   \begin{frame}
     \frametitle{Future: 3D imagery}
